@@ -56,14 +56,15 @@ Example:
       },
 
       _onChangeValue(e) {
-        this._onChangeDegree(this.valueAsNumber)
+        this.set('value', String(this.valueAsNumber))
       },
 
       _onChangeRadian(radian) {
         if(this._dont_loop)
           return
 
-        this.value = radian * 180 / Math.PI
+        this.valueAsNumber = radian * 180 / Math.PI
+        this.set('value', String(this.valueAsNumber))
       },
 
       _onChangeDegree(degree) {

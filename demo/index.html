@@ -22,7 +22,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>An example of <code>&lt;things-angle-input&gt;</code>:</p>
   
       <p>Type angle as degree <input is="things-angle-input" radian="{{radian}}"></p>
-      <p>You typed the angle as radian - <span></span>{{radian}}</span></p>
+      <p>You typed the angle as radian : <span></span>{{radian}}</span></p>
+      <p>Reset radian value to 0.1 <button id="reset">RESET</button></p>
     </template>
+    
+    <script>
+      window.addEventListener('WebComponentsReady', function(e) {
+        var app = document.querySelector('#app')
+        app.radian = 0.1
+        app.$.reset.addEventListener('click', function(e) {
+          app.radian = 0.1
+        })
+      });
+    </script>
   </body>
 </html>
