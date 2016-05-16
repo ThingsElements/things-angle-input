@@ -58,7 +58,7 @@ Example:
       _onChangeValue(e) {
         if(this.valueAsNumber === NaN)
           return
-        
+
         this.set('value', String(this.valueAsNumber))
       },
 
@@ -67,6 +67,8 @@ Example:
           return
 
         this.valueAsNumber = radian * 180 / Math.PI
+        if(this.valueAsNumber === NaN)
+          return
         this.set('value', String(this.valueAsNumber))
       },
 
