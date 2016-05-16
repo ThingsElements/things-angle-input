@@ -56,8 +56,10 @@ Example:
       },
 
       _onChangeValue(e) {
-        if(this.valueAsNumber === NaN)
+        if(this.valueAsNumber === NaN) {
+          e.stopPropagation()
           return
+        }
 
         this.set('value', String(this.valueAsNumber))
       },
