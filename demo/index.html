@@ -30,10 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       window.addEventListener('WebComponentsReady', function(e) {
         var app = document.querySelector('#app')
         app.radian = 0.1
-        // app.$.reset.addEventListener('click', function(e) {
-        //   app.radian = 0.1
-        // })
-        app.$.addEventListener('change', function(e) {
+        app.$.reset.addEventListener('click', function(e) {
           app.radian = 0.1
         })
       });
