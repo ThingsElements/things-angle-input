@@ -12,7 +12,7 @@
   ],
   "main": "things-angle-input.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/ThingsElements/seed-element/",
+  "homepage": "https://github.com/ThingsElements/things-angle-input/",
   "ignore": [
     "/.*",
     "/test/"
