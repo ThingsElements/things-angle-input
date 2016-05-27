@@ -54,16 +54,33 @@ Example:
       },
 
       _onChangeValue(e) {
-        var value = this.options[this.selectedIndex].value
-        this.set('value', value)
+        this.set('value', this.options[this.selectedIndex].value)
       },
 
       _onChangeRadian(radian) {
         if(this._dont_loop)
           return
 
-        this.value = radian * 180 / Math.PI
-        this.set('value', String(this.value))
+        var value = radian * 180 / Math.PI
+
+        var nearest_option = -1
+        var diff
+
+        Array.from(this.options).forEach(function(option, index) {
+          let gap = Math.abs(Number(value) - Number(option.value))
+          if(nearest_option == -1) {
+            nearest_option = option
+            diff = gap
+            return
+          }
+          if(diff > gap) {
+            nearest_option = index
+            diff = gap
+          }
+        })
+
+        this.selectedIndex = nearest_option
+        this.set('value', this.options[this.selectedIndex].value)
       },
 
       _onChangeDegree(degree) {
