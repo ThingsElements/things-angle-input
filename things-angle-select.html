@@ -61,18 +61,23 @@ Example:
         if(this._dont_loop)
           return
 
-        var value = radian * 180 / Math.PI
+        var PI_2 = Math.PI * 2
+        var value = (((radian % PI_2) + PI_2) % PI_2) * 180 / Math.PI
 
         var nearest_option = -1
         var diff
 
         Array.from(this.options).forEach(function(option, index) {
-          let gap = Math.abs(Number(value) - Number(option.value))
+          let gap = Math.abs(Number(value) - Number(option.value)) % 360
+          if(gap > 180)
+            gap = 360 - gap
+
           if(nearest_option == -1) {
-            nearest_option = option
+            nearest_option = index
             diff = gap
             return
           }
+
           if(diff > gap) {
             nearest_option = index
             diff = gap
