@@ -55,25 +55,38 @@ Example:
           this.setAttribute('placeholder', '°')
       },
 
-      _onChangeValue(e) {
-        this.set('value', String(this.valueAsNumber))
+      _onChangeValue(value) {
+        this.set('value', value)
       },
 
       _onChangeRadian(radian) {
         if(this._dont_loop)
           return
 
-        this.valueAsNumber = radian * 180 / Math.PI
-        this.set('value', String(this.valueAsNumber))
+        var number = radian * 180 / Math.PI;
+
+        if(isNaN(number)) {
+          this.valueAsNumber = undefined;
+        } else {
+          this.valueAsNumber = number;
+          this.set('value', String(this.valueAsNumber));
+        }
       },
 
       _onChangeDegree(degree) {
         this._dont_loop = true
-        this.set('radian', degree * (Math.PI / 180))
+
+        var number = degree * (Math.PI / 180);
+
+        if(isNaN(number)) {
+          this.set('radian', undefined);
+        } else {
+          this.set('radian', number);
+        }
+
         this._dont_loop = false
       }
     });
   })();
   </script>
 </dom-module>
-
